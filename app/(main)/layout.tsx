@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import {
   useRouter,
   usePathname,
@@ -37,6 +38,10 @@ export default function MainLayout({
       .then(
         ({
           data: { session },
+        }: {
+          data: {
+            session: any;
+          };
         }) => {
           if (session) {
             setUser(
@@ -57,8 +62,8 @@ export default function MainLayout({
     } =
       supabase.auth.onAuthStateChange(
         (
-          _event,
-          session
+          _event: any,
+          session: any
         ) => {
           if (session) {
             setUser(
